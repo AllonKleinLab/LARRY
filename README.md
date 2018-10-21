@@ -1,3 +1,3 @@
 # LARRY
 
-LARRY (*L*ineage and RNA recovery)
+LARRY (__L__ineage __a__nd __R__NA __r__ecovery)
