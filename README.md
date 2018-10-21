@@ -2,8 +2,7 @@
 
 LARRY (**L**ineage **a**nd **R**NA **r**ecovery) is a tool for labeling cells with a unique lineage barcode that can be read out in single-cell RNA-seq. The instructions for generating and sequenciung the barcode library are available [HERE]. This repository contains a computational pipeline for transforming raw barcode sequencing data into clonal labels for each cell. The pipeline has two steps:
 
-1. Sorting and filtering of raw sequencing reads
-
+1. Sorting and filtering of raw sequencing reads \
   Input: Files generated from the indrops pipeline, including...
   - Balh1
   - Blah2
