@@ -6,11 +6,14 @@ LARRY (**L**ineage **a**nd **R**NA **r**ecovery) is a tool for labeling cells wi
 Input: Files generated from the indrops pipeline, including...
 - Balh1
 - Blah2
+
 Output: A fastq file with barcode sequences and headers indicating library nane, cell barcode and UMI, e.g. 
 
 >Sample1,CTATCG-GTTCAT,CGGATC
+
 ACTATGTACACAGCGGACAATCGAACGAG
 
 2. Assignment of clonal labels to each cell
 Input: The output of step (1), a fastq file with barcode sequences and headers indicating library nane, cell barcode and UMI
+
 Output: A NxM binary matrix, where entry (i,j) is 1 if cell i is in clone j. Several plots for evaluating paramnter choices are also output. 
