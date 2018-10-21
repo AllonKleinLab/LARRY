@@ -19,6 +19,20 @@ To perform step (1), copy the ```LARRY_sorting_and_filtering.py``` script (from 
 
 ``` python LARRY_sorting_and_filtering.py```
 
+The script assumes that the output of the indrops pipeline has the following file structure:
+
+```
+output
+├──[Library_name_1]
+│   ├──abundant_barcodes.pickle
+│   └──filtered_parts
+│        └──[Library_name_1]_[Index_1]_.fastq.sorted.fastq.gz
+└──Library_name_N
+    ├──abundant_barcodes.pickle
+    └──filtered_parts
+         └──[Library_name_N]_[Index_N]_.fastq.sorted.fastq.gz
+```
+
 The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq```, which can be carried forward to step (2). Each entry of the fastq file includes a library name, cell barcode, UMI and LARRY barcode sequence, as follows:
 
 ```
