@@ -6,15 +6,10 @@ The pipeline has two steps. Step (1) is built to work with the output of the [in
 
 1. Sorting and filtering of raw sequencing reads
     * Input: Standard files generated from the [indrops pipeline](https://github.com/indrops/indrops)
-    * Output: A fastq file with barcode sequences and headers indicating library nane, cell barcode and UMI, e.g. 
-
-```
->Sample1,CTATCG-GTTCAT,CGGATC
-ACTATGTACACAGCGGACAATCGAACGAG
-```
+    * Output: A fastq file with barcode sequences and headers indicating library name, cell barcode and UMI 
 
 2. Assignment of clonal labels to each cell
-    * Input: The output of step 1 (fastq file with barcodes and headers indicating library nane, cell barcode and UMI
+    * Input: The output of step 1 (fastq file with barcodes and headers indicating library nane, cell barcode and UMI)
     * Output: NxM binary matrix, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices are also output. 
 
 
@@ -24,10 +19,18 @@ To perform step (1), copy the ```LARRY_sorting_and_filtering.py``` script (from 
 
 ``` python LARRY_sorting_and_filtering.py```
 
-The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq```, which can be carried forward to step (2). The script assumes that the output of the indrops pipeline has the following file structure:
+The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq```, which can be carried forward to step (2). Each entry of the fastq file includes a library name, cell barcode, UMI and LARRY barcode sequence, as follows:
 
 ```
-Blah
-├──blah1
-├──blah2
+>[Library name],[cell barcode],[UMI]
+[LARRY barcode sequence]
 ```
+
+For example, a typical entry might look like
+
+```
+>Sample1,CTATCG-GTTCAT,CGGATC
+ACTATGTACACAGCGGACAATCGAACGAG
+```
+
+
