@@ -1,3 +1,3 @@
 # LARRY
 
-LARRY (__L__ineage __a__nd __R__NA __r__ecovery)
+LARRY (__L__ ineage __a__ nd __R__ NA __r__ ecovery)
