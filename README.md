@@ -66,7 +66,7 @@ The inputs are
 
 Note that files (2) and (3) in the above list are standard outputs of the [SPRING data_prep pipeline for indrops data](https://github.com/AllonKleinLab/SPRING_dev/blob/master/data_prep/spring_example_HPCs.ipynb).
 
-The output is a NxM binary matrix called ```clone_mat.csv```, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices.
+The output is a NxM binary matrix called ```clone_mat.csv```, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating parameter choices.
 
 The filtering step are:
 
