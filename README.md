@@ -60,9 +60,11 @@ The purpose of step 2 is to aggregate the barcode reads for each cell and perfor
 
 The inputs are
 
-1. A fastq file with the format described above for ```LARRY_sorted_and_filtered_barcodes.fastq.gz```. The fastq file can be generated using step 1 of this pipeline for indrops users or using an custom pipeline for users of other single-cell RNA-seq platforms. 
-2. An ordered list of cell barcodes, corresponding to the rows of the counts matrix being used for gene expression analysis
-3. An ordered list of library names, corresponding to the rows of the counts matrix being used for gene expression analysis
+1. A fastq file with the format described above for ```LARRY_sorted_and_filtered_barcodes.fastq.gz```
+2. An ordered list of cell barcodes, corresponding to the rows of the gene expression counts matrix
+3. An ordered list of library names, corresponding to the rows of the gene expression counts matrix
+
+Note that files (2) and (3) in the above list are standard outputs of the [SPRING data_prep pipeline for indrops data](https://github.com/AllonKleinLab/SPRING_dev/blob/master/data_prep/spring_example_HPCs.ipynb).
 
 The output is a NxM binary matrix called ```clone_mat.csv```, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices.
 
