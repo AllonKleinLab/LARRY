@@ -8,12 +8,19 @@ The pipeline has two steps. Step (1) is built to work with the output of the [in
     * Input: Standard files generated from the [indrops pipeline](https://github.com/indrops/indrops)
     * Output: A fastq file with barcode sequences and headers indicating library name, cell barcode and UMI 
 
-2. Assignment of clonal labels to each cell
+2. Clonal annotation of cells
     * Input: The output of step 1 (fastq file with barcodes and headers indicating library nane, cell barcode and UMI)
     * Output: NxM binary matrix, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices are also output. 
 
 
-## Sorting and filtering of raw sequencing reads
+## Step 1: Sorting and filtering of barcode sequencing reads
+
+The purpose of step 1 is to parse the standard output of the indrops pipeline and generate a single file that lists all the valid barcodes reads with their associated metadata. The pipeline assumes that the reads were generated from targeted sequencing of the LARRY barcodes, using one of the following (forward) primers for targeting:
+
+```
+TCGTCGGCAGCGTCAGATGTGTATAAGAGACAGNNNNcaagtaacgaagagtaaccgttgcta
+TCGTCGGCAGCGTCAGATGTGTATAAGAGACAGNNNNtaaccgttgctaggagagaccatatg
+```
 
 To perform step (1), copy the ```LARRY_sorting_and_filtering.py``` script (from this repository) into the ```output``` directory of the indrops pipeline, and then run it from the command line:
 
@@ -33,7 +40,7 @@ output
          └──[Library_name_N]_[Index_N]_.fastq.sorted.fastq.gz
 ```
 
-The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq```, which can be carried forward to step (2). Each entry of the fastq file includes a library name, cell barcode, UMI and LARRY barcode sequence, as follows:
+The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq.gz```, which can be carried forward to step (2). Each entry of the fastq file includes a library name, cell barcode, UMI and LARRY barcode sequence, as follows:
 
 ```
 >[Library name],[cell barcode],[UMI]
@@ -43,8 +50,11 @@ The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes
 For example, a typical entry might look like
 
 ```
->Sample1,CTATCG-GTTCAT,CGGATC
+>Sample1,bcEDSG,CGGATC
 ACTATGTACACAGCGGACAATCGAACGAG
 ```
+
+## Clonal annotation of cells
+
 
 
