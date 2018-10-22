@@ -10,12 +10,12 @@ The pipeline has two steps. Step (1) is built to work with the output of the [in
 
 2. Clonal annotation of cells
     * Input: The output of step 1 (fastq file with barcodes and headers indicating library nane, cell barcode and UMI)
-    * Output: NxM binary matrix, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices are also output. 
+    * Output: NxM binary matrix, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating parameter choices are also output. 
 
 
 ## Step 1: Sorting and filtering of barcode sequencing reads
 
-The purpose of step 1 is to parse the standard output of the indrops pipeline and generate a single file that lists all the valid barcodes reads with their associated metadata. The pipeline assumes that the reads were generated from targeted sequencing of the LARRY barcodes, using one of the following (forward) primers for targeting:
+The purpose of step 1 is to parse the standard output of the indrops pipeline and generate a single file that lists all the valid barcode reads with their associated metadata. The pipeline assumes that the reads were generated from targeted sequencing of the LARRY barcodes, using one of the following (forward) primers for targeting:
 
 ```
 TCGTCGGCAGCGTCAGATGTGTATAAGAGACAGNNNNcaagtaacgaagagtaaccgttgcta
@@ -54,7 +54,23 @@ For example, a typical entry might look like
 ACTATGTACACAGCGGACAATCGAACGAG
 ```
 
-## Clonal annotation of cells
+## Step 2: Clonal annotation of cells
 
+The purpose of step 2 is to aggregate the barcode reads for each cell and perform a series of filtering and quality control steps to produce a final clonal annotation. 
 
+The inputs are
 
+1. A fastq file with the format described above for ```LARRY_sorted_and_filtered_barcodes.fastq.gz```. The fastq file can be generated using step 1 of this pipeline for indrops users or using an custom pipeline for users of other single-cell RNA-seq platforms. 
+2. An ordered list of cell barcodes, corresponding to the rows of the counts matrix being used for gene expression analysis
+3. An ordered list of library names, corresponding to the rows of the counts matrix being used for gene expression analysis
+
+The output is a NxM binary matrix called ```clone_mat.csv```, where entry (i,j) is 1 if cell i is in clone j, as well as several plots for evaluating paramnter choices.
+
+The filtering step are:
+
+1. Collapse the data into unique (Cell,UMI,barcode) triples, keeping track of their respective multiplicities
+2. Merge barcode sequences that are highly similar, i.e. that have a hamming distance less than or equal to *H*
+3. Filter out (Cell,UMI,BC) triples that are supported by fewer than _R_ reads
+4. Make a final list of (Cell,BC) pairs, keeping those that are supported by at least _U_ UMIs
+
+To run the clonal annotation pipeline, open the ```clonal_annotation.ipynb``` jupyter notebook (from this repository) and follow the instructions in the comments. 
