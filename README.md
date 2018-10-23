@@ -33,11 +33,11 @@ output
 ├──[Library_name_1]
 │   ├──abundant_barcodes.pickle
 │   └──filtered_parts
-│        └──[Library_name_1]_[Index_1]_.fastq.sorted.fastq.gz
+│        └──[Library_name_1]_[Index_1]_.fastq
 └──Library_name_N
     ├──abundant_barcodes.pickle
     └──filtered_parts
-         └──[Library_name_N]_[Index_N]_.fastq.sorted.fastq.gz
+         └──[Library_name_N]_[Index_N]_.fastq
 ```
 
 The script will output a fastq file called ```LARRY_sorted_and_filtered_barcodes.fastq.gz```, which can be carried forward to step (2). Each entry of the fastq file includes a library name, cell barcode, UMI and LARRY barcode sequence, as follows:
