@@ -75,4 +75,4 @@ The filtering step are:
 3. Filter out (Cell,UMI,BC) triples that are supported by fewer than _R_ reads
 4. Make a final list of (Cell,BC) pairs, keeping those that are supported by at least _U_ UMIs
 
-To run the clonal annotation pipeline, open the ```clonal_annotation.ipynb``` jupyter notebook (from this repository) and follow the instructions in the comments. 
+To run the clonal annotation pipeline, open the ```clonal_annotation.ipynb``` jupyter notebook (from this repository) and follow the instructions in the comments. You will need to install the following python packages: ```numpy```, ```matplotlib```, ```networkx```.
