@@ -1,8 +1,8 @@
 # LARRY
 
-LARRY (**L**ineage **a**nd **R**NA **r**ecovery) is a tool for labeling cells with a unique lineage barcode that can be read out in single-cell RNA-seq. The instructions for generating and sequenciung the barcode library are available [HERE]. This repository contains a computational pipeline for transforming raw barcode sequencing data into clonal labels for each cell. 
+LARRY (**L**ineage **a**nd **R**NA **r**ecovery) is a tool for labeling cells with a unique lineage barcode that can be read out in single-cell RNA-seq. This repository contains a computational pipeline for transforming raw barcode sequencing data into clonal labels for each cell. 
 
-The pipeline has two steps. Step (1) is built to work with the output of the [indrops pipeline](https://github.com/indrops/indrops), and is therefore not suitable for users of other single-cell RNA-seq methods such as 10X. These users can format the data in the appropriate fastq format (see below) and then apply step (2) from this pipeline. 
+The pipeline has two steps. Step (1) is platform-dependent. The documentation below is specific to the [indrops pipeline](https://github.com/indrops/indrops). 10X users should use [this notebook](LARRY_for_10X.ipynb) to perform step (1) and then proceed to step (2) as described below. 
 
 1. Sorting and filtering of raw sequencing reads
     * Input: Standard files generated from the [indrops pipeline](https://github.com/indrops/indrops)
